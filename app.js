@@ -1,10 +1,16 @@
 var express = require("express");
+var debug = require("debug")("app");
+var chalk = require("chalk");
+var morgan = require("morgan");
+var path = require("path");
 
 var app = express();
+app.use(morgan("tiny"));
+app.use(express.static(path.join(__dirname, "/public")));
 app.get("/", function (req, res) {
-  res.send("Hello send from my library app");
+  res.sendFile(path.join(__dirname, "views/index.html"));
 });
 
 app.listen(3000, function () {
-  console.log("Listening on port 3000");
+  debug("app listening on port " + chalk.green("3000 "));
 });
