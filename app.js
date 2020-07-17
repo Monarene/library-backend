@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const path = require("path");
 
 const app = express();
+const bookRouter = express.Router();
 app.use(morgan("tiny"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(
@@ -27,9 +28,26 @@ app.set("views", "./src/views");
 //app.set("view engine", "pug");
 app.set("view engine", "ejs");
 
+// Router
+bookRouter.route("/").get((req, res) => {
+  res.send("Hello Books");
+});
+
+bookRouter.route("/single").get((req, res) => {
+  res.send("Hello Single books");
+});
+
+app.use("/books", bookRouter);
+
 app.get("/", function (req, res) {
   //res.sendFile(path.join(__dirname, "views/index.html"));
-  res.render("outdex", { list: ["a", "b"], title: "Library" });
+  res.render("outdex", {
+    nav: [
+      { link: "/books", title: "Books" },
+      { link: "/authors", title: "Authors" },
+    ],
+    title: "Library",
+  });
 });
 
 app.listen(3000, function () {
