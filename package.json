@@ -4,7 +4,8 @@
   "description": "This library is used to build stuff",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=app nodemon app.js"
   },
   "keywords": [
     "Learn",
@@ -20,5 +21,8 @@
     "jquery": "^3.5.1",
     "morgan": "^1.10.0",
     "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0"
   }
 }
