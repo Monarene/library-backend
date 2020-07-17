@@ -3,9 +3,9 @@ const debug = require("debug")("app");
 const chalk = require("chalk");
 const morgan = require("morgan");
 const path = require("path");
+const bookRouter = require("./src/routes/bookRoutes");
 
 const app = express();
-const bookRouter = express.Router();
 app.use(morgan("tiny"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(
@@ -28,14 +28,7 @@ app.set("views", "./src/views");
 //app.set("view engine", "pug");
 app.set("view engine", "ejs");
 
-// Router
-bookRouter.route("/").get((req, res) => {
-  res.send("Hello Books");
-});
-
-bookRouter.route("/single").get((req, res) => {
-  res.send("Hello Single books");
-});
+// Books Router
 
 app.use("/books", bookRouter);
 
