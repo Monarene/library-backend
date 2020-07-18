@@ -1,5 +1,6 @@
 const express = require("express");
 const bookRouter = express.Router();
+const debug = require("debug")("app:bookRoutes");
 
 function router(nav) {
   const books = [
@@ -38,6 +39,7 @@ function router(nav) {
   });
 
   bookRouter.route("/single").get((req, res) => {
+    debug("");
     res.send("Hello Single books");
   });
 

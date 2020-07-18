@@ -10,6 +10,7 @@ const nav = [
 ];
 
 const bookRouter = require("./src/routes/bookRoutes")(nav);
+const adminRouter = require("./src/routes/adminRoutes")(nav);
 
 const app = express();
 app.use(morgan("tiny"));
@@ -37,6 +38,7 @@ app.set("view engine", "ejs");
 // Books Router
 
 app.use("/books", bookRouter);
+app.use("/admin", adminRouter);
 
 app.get("/", function (req, res) {
   //res.sendFile(path.join(__dirname, "views/index.html"));
