@@ -49,7 +49,6 @@ function router() {
 
       client.close();
     })();
-    res.send("Inserting books");
   });
 
   return adminRouter;
