@@ -4,6 +4,9 @@ const chalk = require("chalk");
 const morgan = require("morgan");
 const path = require("path");
 const bodyParser = require("body-parser");
+const passport = require("passport");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 const nav = [
   { link: "/books", title: "Book" },
@@ -18,6 +21,11 @@ const app = express();
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({ secret: "library" }));
+
+require("./src/config/passport.js")(app);
+
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(
   "/css",
