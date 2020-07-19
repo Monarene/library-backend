@@ -4,7 +4,7 @@ const debug = require("debug")("app:authRoutes");
 
 const authRouter = express.Router();
 
-function router() {
+function router(nav) {
   authRouter.route("/signUp").post((req, res) => {
     const { username, password } = req.body;
     const url = "mongodb://localhost:27017";
@@ -32,6 +32,12 @@ function router() {
     debug(req.body);
   });
 
+  authRouter.route("/signin").get((req, res) => {
+    res.render("signin", {
+      nav,
+      title: "Sign In",
+    });
+  });
   authRouter.route("/profile").get((req, res) => {
     res.json(req.user);
   });
