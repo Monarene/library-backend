@@ -7,12 +7,14 @@ const books = [
     title: "War and Peace",
     genre: "Historical Fiction",
     author: "Lev Niko Tolstoy",
+    bookId: 656,
     read: false,
   },
   {
     title: "War and Peace",
     genre: "Historical Fiction",
     author: "Lev Niko Tolstoy",
+    bookId: 24200,
     read: false,
   },
   {

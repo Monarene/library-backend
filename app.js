@@ -64,6 +64,6 @@ app.get("/", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
+app.listen(8888, function () {
   debug("app listening on port " + chalk.green("3000 "));
 });
